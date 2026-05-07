@@ -1,0 +1,33 @@
+public class MathOperation {
+
+    // Overloaded method for power (int)
+    void power(int a, int b) {
+        System.out.println("Power (int): " + Math.pow(a, b));
+    }
+
+    // Overloaded method for power (double)
+    void power(double a, double b) {
+        System.out.println("Power (double): " + Math.pow(a, b));
+    }
+
+    // Overloaded method for absolute (int)
+    void absolute(int a) {
+        System.out.println("Absolute (int): " + Math.abs(a));
+    }
+
+    // Overloaded method for absolute (double)
+    void absolute(double a) {
+        System.out.println("Absolute (double): " + Math.abs(a));
+    }
+
+    public static void main(String[] args) {
+
+        MathOperation m = new MathOperation();
+
+        m.power(2, 3);
+        m.power(2.5, 2.0);
+
+        m.absolute(-10);
+        m.absolute(-5.6);
+    }
+}

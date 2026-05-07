@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class ATM {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        double balance = 1000;
+        int choice;
+
+        do {
+
+            System.out.println("\n--- ATM Menu ---");
+            System.out.println("1. Balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter Choice: ");
+            choice = sc.nextInt();
+
+            try {
+
+                switch(choice) {
+
+                    case 1:
+                        System.out.println("Balance: " + balance);
+                        break;
+
+                    case 2:
+                        System.out.println("Enter Deposit Amount:");
+                        double deposit = sc.nextDouble();
+
+                        if(deposit <= 0) {
+                            throw new IllegalArgumentException("Invalid amount");
+                        }
+
+                        balance += deposit;
+                        System.out.println("Amount was deposited");
+                        break;
+
+                    case 3:
+                        System.out.println("Enter Withdraw Amount:");
+                        double withdraw = sc.nextDouble();
+
+                        if(withdraw > balance) {
+                            throw new ArithmeticException("Insufficient Funds");
+                        }
+
+                        if(withdraw <= 0) {
+                            throw new IllegalArgumentException("Invalid amount");
+                        }
+
+                        balance -= withdraw;
+                        System.out.println("Amount was withdrawn");
+                        break;
+
+                    case 4:
+                        System.out.println("Thank you");
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice");
+                }
+
+            }
+
+            catch(IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            catch(ArithmeticException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            finally {
+                System.out.println("Transaction Completed");
+            }
+
+        }
+
+        while(choice != 4);
+
+        sc.close();
+    }
+}

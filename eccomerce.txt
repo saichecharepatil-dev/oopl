@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+class Product {
+
+    String name;
+    double price;
+    int quantity;
+
+    // Default constructor
+    Product() {
+        name = "Laptop";
+        price = 50000;
+        quantity = 1;
+    }
+
+    // Parameterized constructor
+    Product(String n, double p, int q) {
+        name = n;
+        price = p;
+        quantity = q;
+    }
+
+    // Calculate total
+    double calculateTotal() {
+        return price * quantity;
+    }
+}
+
+public class Ecommerce {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Default product
+        Product p1 = new Product();
+
+        // User entered product
+        System.out.println("Enter Product Name:");
+        String name = sc.nextLine();
+
+        System.out.println("Enter Product Price:");
+        double price = sc.nextDouble();
+
+        System.out.println("Enter Quantity:");
+        int quantity = sc.nextInt();
+
+        Product p2 = new Product(name, price, quantity);
+
+        // Total calculation
+        double total1 = p1.calculateTotal();
+        double total2 = p2.calculateTotal();
+
+        double grandTotal = total1 + total2;
+
+        double discount = 0;
+
+        // Discount condition
+        if(grandTotal > 50000) {
+            discount = grandTotal * 0.10;
+        }
+
+        double finalAmount = grandTotal - discount;
+
+        // Invoice
+        System.out.println("\n----- INVOICE -----");
+
+        System.out.println("Product: " + p1.name);
+        System.out.println("Price: " + p1.price);
+        System.out.println("Quantity: " + p1.quantity);
+        System.out.println("Total: " + total1);
+
+        System.out.println("\nProduct: " + p2.name);
+        System.out.println("Price: " + p2.price);
+        System.out.println("Quantity: " + p2.quantity);
+        System.out.println("Total: " + total2);
+
+        System.out.println("\nGrand Total: " + grandTotal);
+        System.out.println("Discount: " + discount);
+        System.out.println("Final Amount: " + finalAmount);
+
+        sc.close();
+    }
+}
